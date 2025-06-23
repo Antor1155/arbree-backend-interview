@@ -6,7 +6,7 @@ userAuthRouter.post(
   "/login",
   validateRequest({
     check_from: "body",
-    mustKeys: ["name", "password"],
+    mustKeys: ["email", "password"],
   }),
   userLoginController
 );
