@@ -1,6 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
-const port = 5000;
+const indexRouter = require("./routes/index");
+const databaseConnection = require("./config/database");
+const { PORT } = process.env;
+
+// Database
+databaseConnection();
 
 // Middleware Array
 const middleware = [
@@ -10,7 +16,8 @@ const middleware = [
 ];
 
 app.use(middleware);
+app.use(indexRouter);
 
-app.listen(port, () => {
-  console.log("task 1 server is running");
+app.listen(PORT, () => {
+  console.log(`task 1 server is running on PORT :  ${PORT} `);
 });
