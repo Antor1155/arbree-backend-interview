@@ -3,4 +3,5 @@ module.exports = {
   userRegisterController: require("./userRegisterController"),
   addEvent: require("./addEvent"),
   getEvent: require("./getEvent"),
+  deleteEvent: require("./deleteEvent"),
 };

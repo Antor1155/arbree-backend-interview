@@ -1,7 +1,7 @@
 const { userAuthorization } = require("../../middleware/authorization");
 const { validateRequest } = require("../../middleware/validateRequest");
 const router = require("express").Router();
-const { addEvent, getEvent } = require("../controllers");
+const { addEvent, getEvent, deleteEvent } = require("../controllers");
 const multerDiskStorage = require("../../utils/multerDiskStorage");
 
 router
@@ -16,6 +16,7 @@ router
     }),
     addEvent
   )
-  .get("/all", getEvent);
+  .get("/all", getEvent)
+  .delete("/:id", userAuthorization, deleteEvent);
 
 module.exports = router;
