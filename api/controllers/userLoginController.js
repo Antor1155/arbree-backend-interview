@@ -6,6 +6,8 @@ const userLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
+    console.log({ email });
+
     const userExist = await getUser({ email });
     if (!userExist) {
       throw new Error("user not present");
@@ -29,9 +31,10 @@ const userLoginController = async (req, res) => {
       email: userExist?.email,
     });
   } catch (error) {
+    console.log({ error });
     return res.status(400).json({
       code: 400,
-      status: failed,
+      status: "failed",
       msg: error.message,
     });
   }

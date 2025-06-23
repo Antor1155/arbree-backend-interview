@@ -27,10 +27,10 @@ const userRegisterController = async (req, res) => {
   } catch (error) {
     return res.status(400).json({
       code: 400,
-      status: failed,
+      status: "failed",
       msg: error.message,
     });
   }
 };
 
-module.exports = userLoginController;
+module.exports = userRegisterController;
