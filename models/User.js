@@ -1,16 +1,22 @@
-const { Schema, model, Types } = require("mongoose");
-const userSchema = new Schema({
-  email: {
-    type: String,
-    require: true,
-    unique: true,
-    index: true,
+const mongoose = require("mongoose");
+
+const { Schema, model } = mongoose;
+
+const userSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true, // corrected 'require' to 'required'
+      unique: true,
+      index: true,
+    },
+    hash: {
+      type: String,
+      required: true, // corrected 'require' to 'required'
+    },
   },
-  hash: {
-    type: String,
-    require: true,
-  },
-});
+  { timestamps: true }
+);
 
 const User = model("User", userSchema);
 

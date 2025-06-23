@@ -6,8 +6,6 @@ const userLoginController = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    console.log({ email });
-
     const userExist = await getUser({ email });
     if (!userExist) {
       throw new Error("user not present");
@@ -22,7 +20,6 @@ const userLoginController = async (req, res) => {
     }
 
     const jwtToken = generateJwtToken({
-      _id: userExist?._id,
       email: userExist?.email,
     });
 

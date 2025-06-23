@@ -7,7 +7,7 @@ const userRegisterController = async (req, res) => {
     const { email, password } = req.body;
 
     const userExist = await getUser({ email });
-    if (!userExist) {
+    if (userExist) {
       throw new Error("user with same email already present");
     }
 
@@ -16,7 +16,6 @@ const userRegisterController = async (req, res) => {
     const newUser = await addUser({ email, hash: hashedPassword });
 
     const jwtToken = generateJwtToken({
-      _id: newUser?._id,
       email: newUser?.email,
     });
 

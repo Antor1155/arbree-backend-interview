@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = process.env;
 
-module.exports = ({ _id, email }) => {
+module.exports = ({ email }) => {
   try {
     return jwt.sign(
-      { userId, ...spAdminExist },
+      { email },
       JWT_SECRET,
-      86400 // Time in seconds 1 day for easy code format now
+      { expiresIn: 86400 } // 1 day in seconds
     );
   } catch (err) {
-    console.error("Error in generateAccessToken : ", err);
+    console.error("Error in generateAccessToken:", err);
     return null;
   }
 };
