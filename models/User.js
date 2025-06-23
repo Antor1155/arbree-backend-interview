@@ -3,6 +3,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     require: true,
+    unique: true,
     index: true,
   },
   hash: {
