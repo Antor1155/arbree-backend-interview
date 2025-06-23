@@ -4,4 +4,5 @@ module.exports = {
   addEvent: require("./addEvent"),
   getEvent: require("./getEvent"),
   deleteEvent: require("./deleteEvent"),
+  searchEvent: require("./searchEvent"),
 };
