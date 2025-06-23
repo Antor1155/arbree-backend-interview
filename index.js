@@ -2,9 +2,13 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require("path");
 const indexRouter = require("./routes/index");
 const databaseConnection = require("./config/database");
 const { PORT } = process.env;
+
+// Serve static files from the uploads folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Database
 databaseConnection();
